@@ -9,9 +9,17 @@ import { Product } from './shop';
 })
 export class ShopService {
 
+
+
 constructor(private http: HttpClient) {}
 
 product_list(): Observable<Product[]> {
   return this.http.get<Product[]>(environment.urlAllProducts);
+}
+tranding_top(): Observable<Product[]> {
+  return this.http.get<Product[]>(environment.urlTrendingPro);
+}
+productnew() {
+  return this.http.get<Product[]>(environment.urlproductnew);
 }
 }
