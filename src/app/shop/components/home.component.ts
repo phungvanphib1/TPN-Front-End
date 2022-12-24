@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-// import { ShopService } from './../shop.service';
+import { environment } from 'src/environments/environment';
+import { ShopService } from '../shop.service';
 
 @Component({
   selector: 'app-home',
@@ -7,10 +8,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private shopService : ShopService) { }
+  url: string = environment.url;
+  trending_top:any[] =[];
+  product_New:any[] = []
   ngOnInit() {
+    this.trending();
+    this.productNew();
   }
+  trending(){
+    this.shopService.tranding_top().subscribe(res =>{
+      this.trending_top = res;
+    })
+  }
+
+  productNew(){
+    this.shopService.productnew().subscribe(res =>{
+      this.product_New = res;
+    })
+  }
+
 
 }
 
