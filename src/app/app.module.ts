@@ -8,7 +8,6 @@ import { HeaderComponent } from './shop/components/header.component';
 import { ShopRoutingModule } from './shop/shop-routing.module';
 import { ShopModule } from './shop/shop.module';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,7 +18,7 @@ import { ShopModule } from './shop/shop.module';
     BrowserModule,
     AppRoutingModule,
     ShopModule,
-    ShopRoutingModule
+    ShopRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

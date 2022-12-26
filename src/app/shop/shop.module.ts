@@ -7,6 +7,8 @@ import { ShopRoutingModule } from './shop-routing.module';
 import { ProductListComponent } from './components/product-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NgxPaginationModule } from 'ngx-pagination';
+
 
 @NgModule({
   declarations: [
@@ -20,6 +22,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     ShopRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    NgxPaginationModule,
   ],
 })
 export class ShopModule { }

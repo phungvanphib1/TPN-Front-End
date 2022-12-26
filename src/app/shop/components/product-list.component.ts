@@ -10,6 +10,7 @@ export class ProductListComponent implements OnInit {
 
   constructor(private shopService: ShopService) { }
   products: any[] = [];
+  p: any = 1;
   url: string = environment.url;
   ngOnInit(): void {
     this.product_list();
