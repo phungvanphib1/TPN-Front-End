@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from './../../environments/environment';
 import { Observable } from 'rxjs';
-import { Product } from './shop';
+import { Category, Product } from './shop';
 
 @Injectable({
   providedIn: 'root'
@@ -21,5 +21,8 @@ tranding_top(): Observable<Product[]> {
 }
 productnew() {
   return this.http.get<Product[]>(environment.urlproductnew);
+}
+category_list() {
+  return this.http.get<Category[]>(environment.urlAllCategories);
 }
 }
