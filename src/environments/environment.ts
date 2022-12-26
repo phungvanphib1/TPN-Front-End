@@ -5,5 +5,5 @@ export const environment = {
   urlAllProducts : urlApi+'product_list',
   urlTrendingPro : urlApi+'trendingProduct',
   urlproductnew : urlApi+'productnew',
-
+  urlAllCategories : urlApi+'category_list',
 };
