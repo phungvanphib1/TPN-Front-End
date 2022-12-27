@@ -23,7 +23,7 @@ import { MatInputModule } from '@angular/material/input';
     ShopComponent,
     HomeComponent,
     ProductListComponent,
-    Product_detailComponent
+    Product_detailComponent,
     ListorderComponent
   ],
   imports: [
