@@ -10,11 +10,15 @@ export class ProductListComponent implements OnInit {
 
   constructor(private shopService: ShopService) { }
   products: any[] = [];
+  categories: any[] = [];
+  cate_id: any;
+  product_cate: any[] = [];
+  p: any = 1;
   url: string = environment.url;
   ngOnInit(): void {
     this.product_list();
+    this.category_list();
     // this.band_list();
-    // this.cate_list();
     // this.serachForm = this.fb.group({
     //   search: [''],
     // })
@@ -32,9 +36,7 @@ export class ProductListComponent implements OnInit {
     //     this.trending();
     //   }
     // }
-    console.log(this.product_list());
-
-
+    // console.log(this.product_list());
   }
 
   product_list() {
@@ -42,10 +44,28 @@ export class ProductListComponent implements OnInit {
       this.products = res;
     })
   }
+
   addToCart(id: number) {
     this.shopService.addToCart(id).subscribe(res => {
       alert('Thêm vào giỏ hàng thành công!');
     })
   }
 
+  category_list(){
+    this.shopService.category_list().subscribe(res => {
+      this.categories = res;
+    })
+  }
+  product_OfCate(cate_id:any){
+    this.cate_id= cate_id;
+    this.shopService.category_list().subscribe(res =>{
+      this.categories= res;
+      for(const category of this.categories){
+        if(this.cate_id == category.id){
+          this.products = category.products;
+          this.product_cate = this.products;
+        }
+      }
+    })
+  }
 }

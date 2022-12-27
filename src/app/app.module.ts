@@ -1,13 +1,18 @@
 import { NgModule } from '@angular/core';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatSliderModule } from '@angular/material/slider';
+import { MatInputModule } from '@angular/material/input';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule, HttpHandler, HttpEvent } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { FooterComponent } from './shop/components/footer.component';
 import { HeaderComponent } from './shop/components/header.component';
 import { ShopRoutingModule } from './shop/shop-routing.module';
 import { ShopModule } from './shop/shop.module';
-
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,10 +21,18 @@ import { ShopModule } from './shop/shop.module';
     FooterComponent,
    ],
   imports: [
+    ReactiveFormsModule,
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     ShopModule,
-    ShopRoutingModule
+    ShopRoutingModule,
+    BrowserAnimationsModule,
+    MatAutocompleteModule,
+    MatSliderModule,
+    MatInputModule
+
+
   ],
   providers: [],
   bootstrap: [AppComponent]
