@@ -78,7 +78,12 @@
             </div>
           </div>
           <div class="product-content">
-            <h4><a href="product-single.html">{{product.name}}</a></h4>
+            <h4>
+              <a [routerLink]="['/product-detail/' + product.id]">{{ product.name }}
+                
+              </a>
+              <!-- <img id="imgdetaill" [src]="url+'public/assets/product/'+ products.image" /> -->
+            </h4>
             <p class="price">{{ product.price |number}} VND</p>
           </div>
         </div>

@@ -9,10 +9,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { ListorderComponent } from './components/listorder.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { Product_detailComponent } from './components/product_detail.component';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatInputModule } from '@angular/material/input';
+
 
 
 @NgModule({
@@ -20,6 +23,7 @@ import { MatInputModule } from '@angular/material/input';
     ShopComponent,
     HomeComponent,
     ProductListComponent,
+    Product_detailComponent
     ListorderComponent
   ],
   imports: [
