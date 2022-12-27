@@ -36,9 +36,7 @@ export class ProductListComponent implements OnInit {
     //     this.trending();
     //   }
     // }
-    console.log(this.product_list());
-
-
+    // console.log(this.product_list());
   }
 
   product_list(){
@@ -51,7 +49,6 @@ export class ProductListComponent implements OnInit {
       this.categories = res;
     })
   }
-  
   product_OfCate(cate_id:any){
     this.cate_id= cate_id;
     this.shopService.category_list().subscribe(res =>{
@@ -64,5 +61,4 @@ export class ProductListComponent implements OnInit {
       }
     })
   }
-
 }

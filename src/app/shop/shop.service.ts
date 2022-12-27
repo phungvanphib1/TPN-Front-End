@@ -9,8 +9,6 @@ import { Category, Product } from './shop';
 })
 export class ShopService {
 
-
-
 constructor(private http: HttpClient) {}
 
 product_list(): Observable<Product[]> {
@@ -24,5 +22,16 @@ productnew() {
 }
 category_list() {
   return this.http.get<Category[]>(environment.urlAllCategories);
+}
+searchProductList(name:string){
+  const response = new Promise(resolve => {
+    this.http.get(environment.urlSearch+`product_list/search?
+    search=${name}`).subscribe(data => {
+      resolve(data)
+    }, err => {
+      console.log(err);
+    });
+  });
+  return response;
 }
 }
