@@ -8,6 +8,7 @@ import { ProductListComponent } from './components/product-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { Product_detailComponent } from './components/product_detail.component';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     ShopComponent,
     HomeComponent,
     ProductListComponent,
+    Product_detailComponent
   ],
   imports: [
     CommonModule,

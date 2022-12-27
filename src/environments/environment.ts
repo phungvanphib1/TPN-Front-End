@@ -6,4 +6,6 @@ export const environment = {
   urlTrendingPro : urlApi+'trendingProduct',
   urlproductnew : urlApi+'productnew',
   urlAllCategories : urlApi+'category_list',
+  urlAllproduct_detail : urlApi+'product_detail',
+  urlAllImage_detail : urlApi+'image_detail',
 };
