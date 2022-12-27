@@ -9,17 +9,27 @@ import { Product } from './shop';
 })
 export class ShopService {
 
+  constructor(private http: HttpClient) { }
 
-
-constructor(private http: HttpClient) {}
-
-product_list(): Observable<Product[]> {
-  return this.http.get<Product[]>(environment.urlAllProducts);
-}
-tranding_top(): Observable<Product[]> {
-  return this.http.get<Product[]>(environment.urlTrendingPro);
-}
-productnew() {
-  return this.http.get<Product[]>(environment.urlproductnew);
-}
+  product_list(): Observable<Product[]> {
+    return this.http.get<Product[]>(environment.urlAllProducts);
+  }
+  tranding_top(): Observable<Product[]> {
+    return this.http.get<Product[]>(environment.urlTrendingPro);
+  }
+  productnew() {
+    return this.http.get<Product[]>(environment.urlproductnew);
+  }
+  addToCart(id: number) {
+    return this.http.get(environment.urlAddToCart + id);
+  }
+  getListOrder(id: any) {
+    return this.http.get(environment.urlGetAllCart);
+  }
+  deleteCart(id: any) {
+    return this.http.get(environment.urlDeleteCart + id);
+  }
+  urlUpdatequantity(id: any, amount: any) {
+    return this.http.get(environment.urlUpdatequantity + id + '/' + amount);
+  }
 }

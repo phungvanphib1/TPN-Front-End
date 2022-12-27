@@ -37,9 +37,14 @@ export class ProductListComponent implements OnInit {
 
   }
 
-  product_list(){
-    this.shopService.product_list().subscribe(res =>{
+  product_list() {
+    this.shopService.product_list().subscribe(res => {
       this.products = res;
+    })
+  }
+  addToCart(id: number) {
+    this.shopService.addToCart(id).subscribe(res => {
+      alert('Thêm vào giỏ hàng thành công!');
     })
   }
 

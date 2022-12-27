@@ -7,12 +7,14 @@ import { ShopRoutingModule } from './shop-routing.module';
 import { ProductListComponent } from './components/product-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ListorderComponent } from './components/listorder.component';
 
 @NgModule({
   declarations: [
     ShopComponent,
     HomeComponent,
     ProductListComponent,
+    ListorderComponent
   ],
   imports: [
     CommonModule,
