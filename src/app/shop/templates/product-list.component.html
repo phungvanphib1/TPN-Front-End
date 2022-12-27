@@ -32,7 +32,6 @@
                 <h4 class="panel-title">
                   <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
                     aria-expanded="true" aria-controls="collapseOne">
-
                     Danh Sách Thể Loại
                   </a>
                 </h4>
@@ -75,13 +74,9 @@
                   </div>
                 </div>
                 <div class="product-content">
-                  <h6><a href="#">{{ product.name }}</a></h6>
-                  <p class="price">{{ product.price |number}} VND</p>
+                  <h4><a [routerLink]="['/product-detail/' + product.id]">{{ product.name }}</a></h4>
+                 <h5><p class="price">{{ product.price |number}} VND</p></h5>
                 </div>
-              </div>
-              <div class="product-content">
-                <h6><a [routerLink]="['/product-detail/' + product.id]">{{ product.name }}</a></h6>
-                <p class="price">{{ product.price |number}} VND</p>
               </div>
             </div>
           </div>

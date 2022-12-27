@@ -21,7 +21,7 @@ export class HeaderComponent implements OnInit {
   })
   }
   reloadCurrentPage(id:any){
-    this._Router.navigate(['/product-detail/'+id]);
+    this._Router.navigate(['product-detail/' + id]);
   }
 
 
