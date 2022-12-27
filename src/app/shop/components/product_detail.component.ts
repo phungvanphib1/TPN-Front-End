@@ -13,7 +13,7 @@ export class Product_detailComponent implements OnInit {
     private shopService: ShopService,
     private _route: ActivatedRoute,
   //  private toastr: ToastrService
-// 
+//
     ) { }
 
   url: string = environment.url;
