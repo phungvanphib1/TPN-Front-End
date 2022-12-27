@@ -23,8 +23,9 @@ export class ListorderComponent implements OnInit {
 
   deleteCart(id: number) {
     this.ShopService.deleteCart(id).subscribe(res => {
-      this.message = res;
-      window.location.reload();
+      this.ShopService.getListOrder(this.customer_id).subscribe(res => {
+        this.orders = res;
+      })
     })
   }
   ngOnInit(): void {
@@ -32,16 +33,21 @@ export class ListorderComponent implements OnInit {
     this.ShopService.getListOrder(this.customer_id).subscribe(res => {
       this.orders = res;
       console.log(res);
-      // for(let orderDetail of this.orders.orders.order_details) {
-      //   this.totalPrice += parseInt(orderDetail.price_at_time) * parseInt(orderDetail.quantity);
-      // }
+      for (let orderDetail of this.orders) {
+        this.totalPrice += (parseInt(orderDetail.price) * parseInt(orderDetail.quantity));
+      }
     })
   }
   urlUpdatequantity(id: any, amount: any) {
     this.ShopService.urlUpdatequantity(id, amount).subscribe((res) => {
-      this.ShopService.getListOrder(this.customer_id);
+      this.ngOnInit();
     });
   }
+  // updateCart():void {
+  //   this.ShopService.urlUpdatequantity(id, amount).subscribe((res) => {
+  //     this.ngOnInit();
+  //   });
+  // }
 
 
 }

@@ -13,14 +13,13 @@
     </div>
   </div>
 </section>
-<!-- <div class="row" *ngFor="let order of order.orders"></div> -->
 
-
+<!-- <div class="row" *ngFor="let order of orders.orderDetail"> -->
 <div class="page-wrapper">
   <div class="cart shopping">
     <div class="container">
       <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-12 col-md-offset-0">
           <div class="block">
             <div class="product-list">
               <form method="post">
@@ -31,6 +30,7 @@
                       <th class="">Tên </th>
                       <th class="">Giá</th>
                       <th class="">Số Lượng</th>
+                      <th class="">Tổng Tiền</th>
                       <th class="">Tùy Chọn</th>
                     </tr>
                   </thead>
@@ -46,32 +46,38 @@
                       </td>
 
                       <td class="">{{ order.name }}</td>
-                      <td class="">{{ order.price }}</td>
+                      <td class="">{{ order.price| number }} vnd</td>
                       <td>
                         <ul class="number">
                           <li>
                             <a onclick="this.parentNode.querySelector('input[type=number]').stepDown();"
-                              (click)="urlUpdatequantity(order.id, amount.value)"></a>
-                            <input #amount name="amount" min="1" style="width: 40px" type="number"
+                              (click)="urlUpdatequantity(order.id, quantity.value)">
+                              <button type="button" class="minus">-</button>
+                            </a>
+                            <input #quantity name="quantity" min="1" style="width: 60px" type="number"
                               value="{{ order.quantity }}" />
-                            <a onclick="this.parentNode.querySelector('input[type=number]').stepUp()"></a>
+                            <a onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                              (click)="urlUpdatequantity(order.id, quantity.value)">
+                              <button type="button" class="plus">+</button>
+                            </a>
                           </li>
                         </ul>
                       </td>
+                      <td>{{ order.price * order.quantity | number }} VND</td>
                       <td class="">
-                        <li>
-                          <button type="button" (click)="deleteCart(order.id)"><i
-                              class="product-remove">Remove</i></button>
-
-                        </li>
-                        <!-- <a class="product-remove" (click)="deleteCart(orders.id)">Remove</a> -->
+                        <a (click)="deleteCart(order.id)"><i class="tf-ion-close"></i></a>
                       </td>
                     </tr>
+                    <!-- <tr>
+                      <td>
+                        <h3 id="tong">Tổng Tiền Phải Trả : {{ totalPrice| number }} VND </h3>
+                      </td>
+                    </tr> -->
                   </tbody>
                 </table>
-                <a href="checkout.html" class="btn btn-main pull-right">Checkout</a>
+                <a href="checkout.html" class="btn btn-main pull-right">Thanh toán</a>
                 <td>
-                  <a href="checkout.html" class="btn btn-main pull-left">Cập nhật giỏ hàng</a>
+                  <!-- <a  (click)="updateCart()" class="btn btn-main pull-left">Cập nhật giỏ hàng</a> -->
                 </td>
               </form>
             </div>
@@ -81,3 +87,4 @@
     </div>
   </div>
 </div>
+<!-- </div> -->
