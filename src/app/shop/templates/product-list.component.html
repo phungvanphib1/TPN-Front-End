@@ -21,53 +21,62 @@
 </section>
 <section class="products section">
   <div class="container">
-  <div class="row">
-    <div class="col-md-3">
+    <div class="row">
+      <div class="col-md-3">
 
-      <div class="widget product-category">
-        <h4 class="widget-title">Loại Sản Phẩm</h4>
-        <div class="panel-group commonAccordion" id="accordion" role="tablist" aria-multiselectable="true">
-          <div class="panel panel-default">
-            <div class="panel-heading" role="tab" id="headingOne">
-              <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
-                  aria-expanded="true" aria-controls="collapseOne">
-                  Danh Sách Thể Loại
-                </a>
-              </h4>
-            </div>
-            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-              <div class="panel-body">
-                <ul>
-                  <li *ngFor="let category of categories" ><a href="#!" (click)="product_OfCate(category.id)">{{category.name}}</a></li>
-                </ul>
+        <div class="widget product-category">
+          <h4 class="widget-title">Loại Sản Phẩm</h4>
+          <div class="panel-group commonAccordion" id="accordion" role="tablist" aria-multiselectable="true">
+            <div class="panel panel-default">
+              <div class="panel-heading" role="tab" id="headingOne">
+                <h4 class="panel-title">
+                  <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
+                    aria-expanded="true" aria-controls="collapseOne">
+
+                    Danh Sách Thể Loại
+                  </a>
+                </h4>
+              </div>
+              <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                <div class="panel-body">
+                  <ul>
+                    <li *ngFor="let category of categories"><a href="#!"
+                        (click)="product_OfCate(category.id)">{{category.name}}</a></li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="col-md-9">
-      <div class="row">
-        <div class="main">
-        <div class="col-md-4" *ngFor="let product of products | paginate: { itemsPerPage: 9, currentPage: p }">
-            <div class="product-item">
-              <div class="product-thumb">
-                <img id="imageprd" [src]="url+product.image" [alt]="product.name" />
-                <div class="preview-meta">
-                  <ul>
-                    <li>
-                      <span data-toggle="modal" data-target="#product-modal">
-                        <i class="tf-ion-ios-search-strong"></i>
-                      </span>
-                    </li>
-                    <li>
-                      <a href="#!"><i class="tf-ion-ios-heart"></i></a>
-                    </li>
-                    <li>
-                      <a href="#!"><i class="tf-ion-android-cart"></i></a>
-                    </li>
-                  </ul>
+      <div class="col-md-9">
+        <div class="row">
+          <div class="main">
+
+            <div class="col-md-4" *ngFor="let product of products | paginate: { itemsPerPage: 9, currentPage: p }">
+
+              <div class="product-item">
+                <div class="product-thumb">
+                  <img id="imageprd" [src]="url+product.image" [alt]="product.name" />
+                  <div class="preview-meta">
+                    <ul>
+                      <li>
+                        <span data-toggle="modal" data-target="#product-modal">
+                          <i class="tf-ion-ios-search-strong"></i>
+                        </span>
+                      </li>
+                      <li>
+                        <a href="#!"><i class="tf-ion-ios-heart"></i></a>
+                      </li>
+                      <li>
+                        <a (click)="addToCart(product.id)"><i class="tf-ion-android-cart"></i></a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="product-content">
+                  <h6><a href="#">{{ product.name }}</a></h6>
+                  <p class="price">{{ product.price |number}} VND</p>
                 </div>
               </div>
               <div class="product-content">
@@ -77,9 +86,9 @@
             </div>
           </div>
         </div>
+        <pagination-controls previousLabel="Trang sau" nextLabel="Trang tiếp"
+          (pageChange)="p = $event"></pagination-controls>
       </div>
-      <pagination-controls previousLabel="Trang sau" nextLabel="Trang tiếp" (pageChange)="p = $event"></pagination-controls>
-    </div>
     </div>
   </div>
 </section>

@@ -10,25 +10,49 @@ import { Category, Images, Product } from './shop';
 export class ShopService {
 
 
+  constructor(private http: HttpClient) { }
 
-constructor(private http: HttpClient) {}
+  product_list(): Observable<Product[]> {
+    return this.http.get<Product[]>(environment.urlAllProducts);
+  }
+  tranding_top(): Observable<Product[]> {
+    return this.http.get<Product[]>(environment.urlTrendingPro);
+  }
+  productnew() {
+    return this.http.get<Product[]>(environment.urlproductnew);
+  }
+  category_list() {
+    return this.http.get<Category[]>(environment.urlAllCategories);
+  }
 
-product_list(): Observable<Product[]> {
-  return this.http.get<Product[]>(environment.urlAllProducts);
-}
-tranding_top(): Observable<Product[]> {
-  return this.http.get<Product[]>(environment.urlTrendingPro);
-}
-productnew() {
-  return this.http.get<Product[]>(environment.urlproductnew);
-}
-category_list() {
-  return this.http.get<Category[]>(environment.urlAllCategories);
-}
 product_detail(id:any): Observable<Product>{
   return this.http.get<Product>(environment.urlAllproduct_detail + '/' + id);
 }
 image_detail(id:any): Observable<Images[]> {
   return this.http.get<Images[]>(environment.urlAllImage_detail + '/' + id);
 }
+  addToCart(id: number) {
+    return this.http.get(environment.urlAddToCart + id);
+  }
+  getListOrder(id: any) {
+    return this.http.get(environment.urlGetAllCart);
+  }
+  deleteCart(id: any) {
+    return this.http.get(environment.urlDeleteCart + id);
+  }
+  urlUpdatequantity(id: any, amount: any) {
+    return this.http.get(environment.urlUpdatequantity + id + '/' + amount);
+  }
+  
+  searchProductList(name: string) {
+    const response = new Promise(resolve => {
+      this.http.get(environment.urlSearch + `product_list/search?
+    search=${name}`).subscribe(data => {
+        resolve(data)
+      }, err => {
+        console.log(err);
+      });
+    });
+    return response;
+  }
 }

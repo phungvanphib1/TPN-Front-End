@@ -6,9 +6,16 @@ import { RouterModule } from '@angular/router';
 import { ShopRoutingModule } from './shop-routing.module';
 import { ProductListComponent } from './components/product-list.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ListorderComponent } from './components/listorder.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { Product_detailComponent } from './components/product_detail.component';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatSliderModule } from '@angular/material/slider';
+import { MatInputModule } from '@angular/material/input';
+
 
 
 @NgModule({
@@ -17,6 +24,7 @@ import { Product_detailComponent } from './components/product_detail.component';
     HomeComponent,
     ProductListComponent,
     Product_detailComponent
+    ListorderComponent
   ],
   imports: [
     CommonModule,
@@ -25,6 +33,12 @@ import { Product_detailComponent } from './components/product_detail.component';
     HttpClientModule,
     ReactiveFormsModule,
     NgxPaginationModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    MatAutocompleteModule,
+    MatSliderModule,
+    MatInputModule
+
   ],
 })
 export class ShopModule { }
