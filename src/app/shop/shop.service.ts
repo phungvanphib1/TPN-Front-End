@@ -12,6 +12,19 @@ export class ShopService {
 
   constructor(private http: HttpClient) { }
 
+  product_list(): Observable<Product[]> {
+    return this.http.get<Product[]>(environment.urlAllProducts);
+  }
+  tranding_top(): Observable<Product[]> {
+    return this.http.get<Product[]>(environment.urlTrendingPro);
+  }
+  productnew() {
+    return this.http.get<Product[]>(environment.urlproductnew);
+  }
+  category_list() {
+    return this.http.get<Category[]>(environment.urlAllCategories);
+  }
+
   addToCart(id: number) {
     return this.http.get(environment.urlAddToCart + id);
   }
@@ -24,29 +37,16 @@ export class ShopService {
   urlUpdatequantity(id: any, amount: any) {
     return this.http.get(environment.urlUpdatequantity + id + '/' + amount);
   }
-constructor(private http: HttpClient) {}
-
-product_list(): Observable<Product[]> {
-  return this.http.get<Product[]>(environment.urlAllProducts);
-}
-tranding_top(): Observable<Product[]> {
-  return this.http.get<Product[]>(environment.urlTrendingPro);
-}
-productnew() {
-  return this.http.get<Product[]>(environment.urlproductnew);
-}
-category_list() {
-  return this.http.get<Category[]>(environment.urlAllCategories);
-}
-searchProductList(name:string){
-  const response = new Promise(resolve => {
-    this.http.get(environment.urlSearch+`product_list/search?
+  
+  searchProductList(name: string) {
+    const response = new Promise(resolve => {
+      this.http.get(environment.urlSearch + `product_list/search?
     search=${name}`).subscribe(data => {
-      resolve(data)
-    }, err => {
-      console.log(err);
+        resolve(data)
+      }, err => {
+        console.log(err);
+      });
     });
-  });
-  return response;
-}
+    return response;
+  }
 }
