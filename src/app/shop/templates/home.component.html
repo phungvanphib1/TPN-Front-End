@@ -1,9 +1,8 @@
 <style>
-  img[id=prdnew]{
+  img[id=prdnew] {
     width: 360px;
     height: 410px;
   }
-
 </style>
 <div class="hero-slider">
   <div class="slider-item th-fullpage hero-area" style="background-image: url(assets/images/slider/slider-2.jpg);">
@@ -11,7 +10,8 @@
       <div class="row">
         <div class="col-lg-8 text-center">
           <p data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".1">TPNShop</p>
-          <h2 style="color: rgb(255, 230, 237);" data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".5">Thời trang chỉ là nhất thời <br>
+          <h2 style="color: rgb(255, 230, 237);" data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".5">
+            Thời trang chỉ là nhất thời <br>
             phong cách mới là mãi mãi</h2>
           <a data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".8" class="btn" href="shop.html">Shop
             Now</a>
@@ -30,7 +30,7 @@
         </div>
       </div>
 
-      <div class="col-md-6" *ngFor="let product of trending_top" >
+      <div class="col-md-6" *ngFor="let product of trending_top">
         <div class="category-box">
           <a href="#!">
             <img id="trendingprd" [src]="url+product.image" alt="" />
@@ -56,7 +56,7 @@
     </div>
     <div class="row">
 
-      <div class="col-md-4" *ngFor="let product of product_New"  >
+      <div class="col-md-4" *ngFor="let product of product_New">
         <div class="product-item">
           <div class="product-thumb">
             <!-- <span class="bage">Sale</span> -->
@@ -72,7 +72,7 @@
                   <a href="#!"><i class="tf-ion-ios-heart"></i></a>
                 </li>
                 <li>
-                  <a href="#!"><i class="tf-ion-android-cart"></i></a>
+                  <a (click)="addToCart(product.id)"><i class="tf-ion-android-cart"></i></a>
                 </li>
               </ul>
             </div>
@@ -86,34 +86,35 @@
 
       <!-- Modal -->
       <div class="modal product-modal fade" id="product-modal">
-			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-				<i class="tf-ion-close"></i>
-			</button>
-		  	<div class="modal-dialog " role="document">
-		    	<div class="modal-content">
-			      	<div class="modal-body">
-			        	<div class="row">
-			        		<div class="col-md-8 col-sm-6 col-xs-12">
-			        			<div class="modal-image">
-				        			<img class="img-responsive" src="assets/images/shop/products/modal-product.jpg" alt="product-img" />
-			        			</div>
-			        		</div>
-			        		<div class="col-md-4 col-sm-6 col-xs-12">
-			        			<div class="product-short-details">
-			        				<h2 class="product-title">GM Pendant, Basalt Grey</h2>
-			        				<p class="product-price">$200</p>
-			        				<p class="product-short-description">
-			        					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem iusto nihil cum. Illo laborum numquam rem aut officia dicta cumque.
-			        				</p>
-			        				<a href="cart.html" class="btn btn-main">Add To Cart</a>
-			        				<a href="product-single.html" class="btn btn-transparent">View Product Details</a>
-			        			</div>
-			        		</div>
-			        	</div>
-			        </div>
-		    	</div>
-		  	</div>
-		</div>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <i class="tf-ion-close"></i>
+        </button>
+        <div class="modal-dialog " role="document">
+          <div class="modal-content">
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-md-8 col-sm-6 col-xs-12">
+                  <div class="modal-image">
+                    <img class="img-responsive" src="assets/images/shop/products/modal-product.jpg" alt="product-img" />
+                  </div>
+                </div>
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                  <div class="product-short-details">
+                    <h2 class="product-title">GM Pendant, Basalt Grey</h2>
+                    <p class="product-price">$200</p>
+                    <p class="product-short-description">
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem iusto nihil cum. Illo laborum
+                      numquam rem aut officia dicta cumque.
+                    </p>
+                    <a href="cart.html" class="btn btn-main">Add To Cart</a>
+                    <a href="product-single.html" class="btn btn-transparent">View Product Details</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <!-- /.modal -->
 
     </div>
