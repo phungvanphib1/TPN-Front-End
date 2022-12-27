@@ -9,6 +9,21 @@ import { Category, Product } from './shop';
 })
 export class ShopService {
 
+
+  constructor(private http: HttpClient) { }
+
+  addToCart(id: number) {
+    return this.http.get(environment.urlAddToCart + id);
+  }
+  getListOrder(id: any) {
+    return this.http.get(environment.urlGetAllCart);
+  }
+  deleteCart(id: any) {
+    return this.http.get(environment.urlDeleteCart + id);
+  }
+  urlUpdatequantity(id: any, amount: any) {
+    return this.http.get(environment.urlUpdatequantity + id + '/' + amount);
+  }
 constructor(private http: HttpClient) {}
 
 product_list(): Observable<Product[]> {

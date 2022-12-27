@@ -12,6 +12,7 @@ export class HeaderComponent implements OnInit {
   url: string = environment.url;
   constructor(private shopService: ShopService, private _Router: Router,) { }
   ngOnInit() {
+
   }
   handdleSearch(name: any){
     const keywork = name.target.value;
@@ -22,5 +23,6 @@ export class HeaderComponent implements OnInit {
   reloadCurrentPage(id:any){
     this._Router.navigate(['/product-detail/'+id]);
   }
+
 
 }
