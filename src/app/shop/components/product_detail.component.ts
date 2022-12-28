@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { environment } from 'src/environments/environment';
+import Swal from 'sweetalert2';
 import { ShopService } from '../shop.service';
 
 @Component({
@@ -14,7 +15,7 @@ export class Product_detailComponent implements OnInit {
     private _route: ActivatedRoute,
 
   //  private toastr: ToastrService
-// 
+//
     ) { }
 
   url: string = environment.url;
@@ -40,8 +41,7 @@ export class Product_detailComponent implements OnInit {
     this.id = this._route.snapshot.params['id'];
     this.shopService.product_detail(this.id).subscribe(res =>{
       this.products = res;
-      // console.log(this.products);
-      // this.trending();
+      this.image1 = this.url+this.products.image
     });
 
     // this.shopService.product_detail(this.id).subscribe(res => {
@@ -62,15 +62,33 @@ export class Product_detailComponent implements OnInit {
     // });
 
   }
-  urlUpdatequantity(id: any, amount: any) {
-    this.shopService.urlUpdatequantity(id, amount).subscribe((res) => {
-      this.ngOnInit();
-    });
-  }
   addToCart(id: number) {
     this.shopService.addToCart(id).subscribe(res => {
-      alert('Thêm vào giỏ hàng thành công!');
+      // thông báo
+      const Toast = Swal.mixin({
+        toast: true,
+        width: 400,
+        position: 'top-end',
+        color: 'rgb(255, 255, 255)',
+        padding: '2em',
+        showConfirmButton: false,
+        background: 'rgb(108, 108, 108)',
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+      })
+
+      Toast.fire({
+        icon: 'success',
+        title: 'Sản Phẩm Đã được thêm vào giỏ hàng!'
+      })
+      // kết thúc thông báo
     })
+  }
+  changeImage(image:any){
+    this.image1 = this.url + image;
   }
   // resetInterval(){
   //   clearInterval(this.inter);
@@ -126,9 +144,7 @@ export class Product_detailComponent implements OnInit {
   //     this.toastr.success('Thành công', 'Thêm vào giỏ hàng!');
   //   })
   // }
-  // changeImage(image:any){
-  //   this.image1 = this.url_image + image;
-  // }
+
   // addToCartByLike(id: number) {
   //   this.shopService.addToCartByLike(id).subscribe(res => {
   //     this.toastr.success('Thành công', 'Thêm vào giỏ hàng yêu thích!');

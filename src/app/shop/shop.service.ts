@@ -8,6 +8,9 @@ import { Category, Images, Product } from './shop';
   providedIn: 'root'
 })
 export class ShopService {
+  image_detail(id: any) {
+    throw new Error('Method not implemented.');
+  }
 
 
   constructor(private http: HttpClient) { }
@@ -41,7 +44,7 @@ product_detail(id:any): Observable<Product>{
   urlUpdatequantity(id: any, amount: any) {
     return this.http.get(environment.urlUpdatequantity + id + '/' + amount);
   }
-  
+
   searchProductList(name: string) {
     const response = new Promise(resolve => {
       this.http.get(environment.urlSearch + `product_list/search?

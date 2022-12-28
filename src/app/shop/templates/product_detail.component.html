@@ -1,79 +1,99 @@
+<style>
+  img[id="img_detail"]{
+    width: 460px;
+    height: 500px;
+  }
+</style>
+<section class="page-header">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="content">
+          <h2 class="page-name">Chi Tiết Sản Phẩm</h2>
+          <ol class="breadcrumb">
+            <li><a [routerLink]="['/home']">Trang Chủ</a></li>
+            <li><a [routerLink]="['/products']">Tất Cả Sản Phẩm</a></li>
+            <li class="active">Chi Tiết</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 <section class="single-product">
-	<div class="container">
-		<div class="row">
-		</div>
-		<div class="row mt-20">
-			<div class="col-md-5">
-				<div class="single-product-slider">
-					<div id='carousel-custom' class='carousel slide' data-ride='carousel'>
-						<div class='carousel-outer'>
-							<!-- me art lab slider -->
-							<div  class='carousel-inner'>
-								<div class='item active' >
-									<img [src]="url+products?.image" [alt]="products.name">
-								</div>
-							</div>
-						</div>
-						<!-- sag sol -->
-						<a class='left carousel-control' href='#carousel-custom' data-slide='prev'>
-							<i class="tf-ion-ios-arrow-left"></i>
-						</a>
-						<a class='right carousel-control' href='#carousel-custom' data-slide='next'>
-							<i class="tf-ion-ios-arrow-right"></i>
-						</a>
-						<!-- thumb -->
-						<ol class='carousel-indicators mCustomScrollbar meartlab'>
-							<li *ngFor="let item of products.image_products" data-target='#carousel-custom'  class='item active'>
-								<img [src]="url+item?.image" [alt]="item.image">
-							</li>
-						</ol>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-7">
-				<div class="single-product-details">
-					<h2>{{ products.name }}</h2>
-					<p class="product-price">{{ products.price|number }}VND</p>
+  <div class="container">
+    <div class="row mt-20">
+      <div class="col-md-5">
+        <div class="single-product-slider">
+          <div id='carousel-custom' class='carousel slide' data-ride='carousel'>
+            <div class='carousel-outer'>
+              <!-- me art lab slider -->
+              <div class='carousel-inner '>
+                <div class='item active'>
+                  <img id="img_detail" (click)="changeImage(product.image)" [src]="image1" [alt]="products.name">
+                </div>
+              </div>
+            </div>
+            <!-- thumb -->
+            <ol class='carousel-indicators'>
+              <li *ngFor="let item of products.image_products">
+                <img (click)="changeImage(item.image)" [src]="url+item?.image" [alt]="item.image">
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-7">
+        <div class="single-product-details">
+          <h1>{{ products.name }}</h1>
+          <div class="group-status">
+            <span class="first_status"><span class="a_name">Thương hiệu:</span> <span style="color: blue;">
+                TPNStore®
+              </span>
+              <span class="hidden-xs">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+            </span>
+            <span class="first_status"><span class="a_name">Tình trạng:</span> <span style="color: blue;">
+                Còn hàng</span></span>
+          </div>
+          <h2 class="product-price">{{ products.price|number }}VND</h2>
+          <p>NEEDS OF WISDOM® / Streetwear / Based in Saigon / Made in Vietnam</p>
 
-					<p class="product-description mt-20">
-					<div class="color-swatches">
-
-					</div>
-					<div class="product-size">
-						<span>Size:</span>
-						<select class="form-control">
-							<option>S</option>
-							<option>M</option>
-							<option>L</option>
-							<option>XL</option>
-						</select>
-					</div>
-					<div class="product-category">
-						<span>Categories:</span>
-						<ul>
-							<li><a href="product-single.html">Products</a></li>
-							<li><a href="product-single.html">Soap</a></li>
-						</ul>
-					</div>
-					<a (click)="addToCart(products.id)" class="btn btn-main mt-20">Add To Cart</a>
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-xs-12">
-				<div class="tabCommon mt-20">
-					<ul class="nav nav-tabs">
-						<li class="active"><a data-toggle="tab" href="#details" aria-expanded="true">Details</a></li>
-					</ul>
-					<div class="tab-content patternbg">
-						<div id="details" class="tab-pane fade active in">
-							<h3>
-								<div [innerHTML]="products.description"></div>
-							</h3>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+          <div class="product-size">
+            <span>Size:</span>
+            <select class="form-control">
+              <option>S</option>
+              <option>M</option>
+              <option>L</option>
+              <option>XL</option>
+            </select>
+          </div>
+          <div class="product-category">
+            <span>Loại:</span>
+            <ul>
+              <li><a href="#">Products</a></li>
+            </ul>
+          </div>
+          <br><br><br>
+          <a (click)="addToCart(products.id)" class="btn btn-main mt-20">Thêm Vào Giỏ Hàng</a>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="tabCommon mt-20">
+          <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#details" aria-expanded="true">Mô Tả Sản Phẩm</a></li>
+          </ul>
+          <div class="tab-content patternbg">
+            <div id="details" class="tab-pane fade active in">
+              <h3>
+                <div [innerHTML]="products.description"></div>
+              </h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
