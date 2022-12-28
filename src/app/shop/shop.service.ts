@@ -28,10 +28,12 @@ export class ShopService {
     return this.http.get<Category[]>(environment.urlAllCategories);
   }
 
-product_detail(id:any): Observable<Product>{
-  return this.http.get<Product>(environment.urlAllproduct_detail + '/' + id);
-}
-
+  product_detail(id: any): Observable<Product> {
+    return this.http.get<Product>(environment.urlAllproduct_detail + '/' + id);
+  }
+  product_images(id: any): Observable<Images[]> {
+    return this.http.get<Images[]>(environment.urlAllImage + '/' + id);
+  }
   addToCart(id: number) {
     return this.http.get(environment.urlAddToCart + id);
   }
