@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import Swal from 'sweetalert2';
 import { ShopService } from '../shop.service';
 
 @Component({
@@ -29,7 +30,26 @@ export class HomeComponent implements OnInit {
   }
   addToCart(id: number) {
     this.shopService.addToCart(id).subscribe(res => {
-      alert('Thêm vào giỏ hàng thành công!');
+      // thông báo
+      const Toast = Swal.mixin({
+        toast: true,
+        width: 400,
+        position: 'top-end',
+        color: 'rgb(255, 255, 255)',
+        padding: '2em',
+        showConfirmButton: false,
+        background: 'rgb(108, 108, 108)',
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+      })
+      Toast.fire({
+        icon: 'success',
+        title: 'Sản Phẩm Đã được thêm vào giỏ hàng!'
+      })
+      // kết thúc thông báo
     })
   }
 
