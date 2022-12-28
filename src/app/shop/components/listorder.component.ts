@@ -65,11 +65,11 @@ export class ListorderComponent implements OnInit {
       this.ngOnInit();
     });
   }
-  // updateCart():void {
+  // updateCart(id: any, amount: any):void {
   //   this.ShopService.urlUpdatequantity(id, amount).subscribe((res) => {
   //     this.ngOnInit();
   //   });
-  // }
+  }
 
 
-}
+

@@ -75,14 +75,11 @@
                   </div>
                 </div>
                 <div class="product-content">
-                  <h6><a href="#">{{ product.name }}</a></h6>
-                  <p class="price">{{ product.price |number}} VND</p>
+                  <h5><a [routerLink]="['/product-detail/' + product.id]">{{ product.name }}</a></h5>
+                <p class="price">{{ product.price |number}} VND</p>
                 </div>
               </div>
-              <div class="product-content">
-                <h6><a [routerLink]="['/product-detail/' + product.id]">{{ product.name }}</a></h6>
-                <p class="price">{{ product.price |number}} VND</p>
-              </div>
+              
             </div>
           </div>
         </div>
