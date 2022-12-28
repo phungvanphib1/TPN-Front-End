@@ -1,0 +1,114 @@
+
+
+ <section class="signin-page account">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <div class="block text-center">
+          <a class="logo" href="index.html">
+            <img src="assets/images/shop/cart/logotpn.png" alt="">
+          </a>
+          <h2 class="text-center">Welcome Back</h2>
+          <form  [formGroup]="loginForm" (ngSubmit)="onSubmit()" >
+            <div class="form-group">
+              <input  formControlName="email"
+              type="email"
+              id="email"
+              class="form-control"
+              name="email"
+              placeholder="Email">
+            </div>
+            <div class="form-group">
+              <input formControlName="password"
+              type="password"
+              id="password"
+              class="form-control"
+              name="password"
+              placeholder="Mật khẩu">
+            </div>
+            <input type="submit" class="btn common-btn" value="Đăng Nhập"/>
+          </form>
+          <p class="mt-20">Bạn chưa có tài khoản ??<a [routerLink]="['/register']"> Đăng kí tài khoản</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<!-- <br>
+<div class="user-area ptb-100">
+  <div class="container">
+    <div class="user-item">
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <h2>Đăng Nhập</h2>
+        <div class="form-group">
+        <input
+            formControlName="email"
+            type="email"
+            id="email"
+            class="form-control"
+            name="email"
+            placeholder="Email"
+          /><br />
+        <small
+          class="label label-danger"
+          *ngIf="!loginForm.controls['email']?.valid && (loginForm.controls['email']?.dirty
+        ||loginForm.controls['email']?.touched) && loginForm.controls['email']?.errors?.['required']"
+          class="help-block text-danger"
+          >Trường bắt buộc!</small
+        >
+        <small
+          class="label label-danger"
+          *ngIf="!loginForm.controls['email']?.valid && (loginForm.controls['email']?.dirty
+        ||loginForm.controls['email']?.touched) && loginForm.controls['email']?.errors?.['email']"
+          class="help-block text-danger"
+          >Email không đúng địng dạng!</small
+        >
+      </div>
+      <div class="form-group">
+        <input
+          formControlName="password"
+          type="password"
+          id="password"
+          class="form-control"
+          name="password"
+          placeholder="Mật khẩu"
+        /><br />
+        <small
+          class="label label-danger"
+          *ngIf="!loginForm.controls['password']?.valid && (loginForm.controls['password']?.dirty
+        ||loginForm.controls['password']?.touched) && loginForm.controls['password']?.errors?.['required']"
+          class="help-block text-danger"
+          >Trường bắt buộc!</small
+        >
+        <small
+          class="label label-danger"
+          *ngIf="!loginForm.controls['password']?.valid && (loginForm.controls['password']?.dirty
+        ||loginForm.controls['password']?.touched) && loginForm.controls['password']?.errors?.['minlength']"
+          class="help-block text-danger"
+          >Mật khẩu tối thiểu 5 ký tự!</small
+        ><br />
+        <small
+          class="label label-danger"
+          *ngIf="error"
+          class="help-block text-danger"
+          >Tài Khoản Hoặc Mật Khẩu Không Đúng</small
+        ><br /></div>
+        <input
+          type="submit"
+          [disabled]="!loginForm.valid"
+          class="btn common-btn"
+          value="Đăng Nhập"
+        />
+        <img src="assets/images/shape1.png" alt="Shape" />
+        <img src="assets/images/shape2.png" alt="Shape" />
+        <h5>
+          Bạn chưa đã có tài khoản ? <a [routerLink]="['/register']">Đăng ký</a>
+        </h5>
+      </form>
+    </div>
+  </div>
+</div> -->
