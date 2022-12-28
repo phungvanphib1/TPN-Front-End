@@ -1,5 +1,5 @@
 <style>
-  img[id="img_detail"]{
+  img[id="img_detail"] {
     width: 460px;
     height: 500px;
   }
@@ -38,6 +38,9 @@
             <ol class='carousel-indicators'>
               <li *ngFor="let item of products.image_products">
                 <img (click)="changeImage(item.image)" [src]="url+item?.image" [alt]="item.image">
+              </li>
+              <li>
+                <img (click)="changeImage(products.image)" [src]="url+products.image">
               </li>
             </ol>
           </div>
