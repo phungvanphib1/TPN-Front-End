@@ -9,7 +9,6 @@ export const environment = {
   urlAllCategories : urlApi+'category_list',
   urlSearch : urlApi,
   urlAllproduct_detail : urlApi+'product_detail',
-  urlAllImage_detail : urlApi+'image_detail',
   urlAddToCart: urlApi + 'add-to-cart/',
   urlGetAllCart: urlApi + 'list-cart/',
   urlDeleteCart: urlApi + 'remove-to-cart/',

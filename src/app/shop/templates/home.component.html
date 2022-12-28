@@ -34,6 +34,7 @@
         <div class="category-box">
           <a href="#!">
             <img id="trendingprd" [src]="url+product.image" alt="" />
+            <a [routerLink]="['/product-detail/' + product.id]"></a>
             <div class="content">
               <h3>{{product.name}}</h3>
               <h4>Sản Phẩm Được Yêu Thích</h4>

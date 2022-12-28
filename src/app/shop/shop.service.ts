@@ -28,9 +28,7 @@ export class ShopService {
 product_detail(id:any): Observable<Product>{
   return this.http.get<Product>(environment.urlAllproduct_detail + '/' + id);
 }
-image_detail(id:any): Observable<Images[]> {
-  return this.http.get<Images[]>(environment.urlAllImage_detail + '/' + id);
-}
+
   addToCart(id: number) {
     return this.http.get(environment.urlAddToCart + id);
   }
