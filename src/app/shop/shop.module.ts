@@ -7,6 +7,8 @@ import { ShopRoutingModule } from './shop-routing.module';
 import { ProductListComponent } from './components/product-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ListorderComponent } from './components/listorder.component';
+import { LoginComponent } from './components/login.component';
+import { RegisterComponent } from './components/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { Product_detailComponent } from './components/product_detail.component';
@@ -22,6 +24,8 @@ import { MatInputModule } from '@angular/material/input';
   declarations: [
     ShopComponent,
     HomeComponent,
+    LoginComponent,
+    RegisterComponent,
     ProductListComponent,
     Product_detailComponent,
     ListorderComponent

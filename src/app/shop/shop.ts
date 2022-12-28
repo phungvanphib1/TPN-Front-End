@@ -12,3 +12,10 @@ export interface Category {
 export interface Images{
   name: any
 }
+export interface User {
+  id?:any;
+  name?:any;
+  phone?:any;
+  email:any;
+  password:any;
+}

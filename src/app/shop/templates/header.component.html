@@ -63,13 +63,17 @@
 
           </li><!-- / Cart -->
           <!-- Languages -->
-          <li class="commonSelect">
-            <select class="form-control">
-              <option>EN</option>
-              <option>DE</option>
-              <option>FR</option>
-              <option>ES</option>
-            </select>
+          <li *ngIf="!check">
+            <a class="join" [routerLink]="['/login']">
+              <i class="flaticon-round-account-button-with-user-inside"></i>
+              Đăng Nhập
+            </a>
+          </li>
+          <li *ngIf="check">
+            <a class="join" (click)="logout()">
+              <i class="flaticon-round-account-button-with-user-inside"></i>
+              Đăng Xuất
+            </a>
           </li>
           <!-- / Languages -->
         </ul><!-- / .nav .navbar-nav .navbar-right -->
