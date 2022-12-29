@@ -14,7 +14,7 @@ export class Product_detailComponent implements OnInit {
     private shopService: ShopService,
     private _route: ActivatedRoute,
   ) { }
-
+  
   url: string = environment.url;
   id: any;
   product_id: any;

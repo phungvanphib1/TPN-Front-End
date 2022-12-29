@@ -6,12 +6,14 @@ import { Product_detailComponent } from './components/product_detail.component';
 import { ListorderComponent } from './components/listorder.component';
 import { LoginComponent } from './components/login.component';
 import { RegisterComponent } from './components/register.component';
+import { CheckoutComponent } from './components/checkout.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'products', component: ProductListComponent },
   { path: 'product-detail/:id', component: Product_detailComponent },
+  { path: 'checkout', component: CheckoutComponent },
   { path: 'listorder', component: ListorderComponent },
   { path: 'register', component: RegisterComponent},
   { path: 'login', component: LoginComponent},

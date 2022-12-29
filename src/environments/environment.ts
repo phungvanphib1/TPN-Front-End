@@ -13,7 +13,12 @@ export const environment = {
   urlGetAllCart: urlApi + 'list-cart/',
   urlDeleteCart: urlApi + 'remove-to-cart/',
   urlUpdatequantity: urlApi + 'update-cart/',
+
+  urlCreateOrder : urlApi+'order/create',
+  urlOrderStore : urlApi+'order/store',
+
   urlRegister: urlApi + 'register',
   urlLogin: urlApi + 'login-customer',
   urlAllImage: urlApi + 'product_images'
+
 };
