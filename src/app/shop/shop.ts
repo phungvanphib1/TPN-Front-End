@@ -13,8 +13,8 @@ export interface Images{
   name: any
 }
 export interface User {
-  id?:any;
   name?:any;
+  address?:any;
   phone?:any;
   email:any;
   password:any;

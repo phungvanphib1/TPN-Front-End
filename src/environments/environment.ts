@@ -1,4 +1,4 @@
-let urlApi = 'http://127.0.0.1:8000/api/';
+const urlApi = 'http://127.0.0.1:8000/api/';
 export const environment = {
   production: false,
 
@@ -13,6 +13,7 @@ export const environment = {
   urlGetAllCart: urlApi + 'list-cart/',
   urlDeleteCart: urlApi + 'remove-to-cart/',
   urlUpdatequantity: urlApi + 'update-cart/',
-  urlRegister : urlApi+'register',
-  urlLogin : urlApi+'login-customer',
+  urlRegister :'http://127.0.0.1:8000/api/register',
+  urlLogin :'http://127.0.0.1:8000/api/login-customer',
+
 };

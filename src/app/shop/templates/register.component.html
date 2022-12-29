@@ -53,21 +53,148 @@
             <img src="assets/images/shop/cart/logotpn.png" alt="">
           </a>
           <h2 class="text-center">Tạo tài khoản của bạn</h2>
-          <form class="text-left clearfix" >
+          <form class="text-left clearfix" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
             <div class="form-group">
-              <input type="text" class="form-control"  placeholder="Họ và Tên">
-            </div>
+              <input
+              formControlName="name"
+              type="text"
+              id="name"
+              class="form-control"
+              name="name"
+              placeholder="Họ và tên"
+            /><br />
+            <small
+            class="label label-danger"
+            *ngIf="!registerForm.controls['name']?.valid && (registerForm.controls['name']?.dirty
+              ||registerForm.controls['name']?.touched) && registerForm.controls['name']?.errors?.['required']"
+            class="help-block text-danger"
+            >Trường bắt buộc!</small
+          >
+        </div>
             <div class="form-group">
-              <input type="email" class="form-control"  placeholder="Email">
-            </div>
+              <input
+              formControlName="email"
+              type="email"
+              id="email"
+              class="form-control"
+              name="email"
+              placeholder="Tài khoản email"
+            /><br />
+            <small
+            class="label label-danger"
+            *ngIf="!registerForm.controls['email']?.valid && (registerForm.controls['email']?.dirty
+              ||registerForm.controls['email']?.touched) && registerForm.controls['email']?.errors?.['required']"
+            class="help-block text-danger"
+            >Trường bắt buộc!</small
+          >
+          <small
+            class="label label-danger"
+            *ngIf="!registerForm.controls['email']?.valid && (registerForm.controls['email']?.dirty
+              ||registerForm.controls['email']?.touched) && registerForm.controls['email']?.errors?.['email']"
+            class="help-block text-danger"
+            >Email không đúng định dạng!</small
+          >
+              <small class="label label-danger" *ngIf="error" class="help-block text-danger">
+                Email đã tồn tại
+              </small>
+        </div>
             <div class="form-group">
-              <input type="password" class="form-control"  placeholder="Mật khẩu">
-            </div>
+              <input
+            formControlName="phone"
+            type="text"
+            id="phone"
+            class="form-control"
+            name="phone"
+            placeholder="Số điện thoại"
+          /><br />
+          <small
+          class="label label-danger"
+          *ngIf="!registerForm.controls['phone']?.valid && (registerForm.controls['phone']?.dirty
+            ||registerForm.controls['phone']?.touched) && registerForm.controls['phone']?.errors?.['required']"
+          class="help-block text-danger"
+          >Trường bắt buộc!</small
+        >
+      </div>
+
             <div class="form-group">
-              <input type="password" class="form-control"  placeholder="Nhắc lại mật khẩu">
+              <input
+            formControlName="address"
+            type="text"
+            id="address"
+            class="form-control"
+            name="address "
+            placeholder="Địa chỉ"
+          /><br />
+          <small
+          class="label label-danger"
+          *ngIf="
+             registerForm.controls['address']?.errors?.['required']"
+          class="help-block text-danger"
+          >Trường bắt buộc!</small
+        >
+      </div>
+
+
+
+            <div class="form-group">
+              <input
+            formControlName="password"
+            type="password"
+            id="password"
+            class="form-control"
+            name="password"
+            placeholder="Mật khẩu"
+          /><br />
+          <small
+          class="label label-danger"
+          *ngIf="!registerForm.controls['password']?.valid && (registerForm.controls['password']?.dirty
+        ||registerForm.controls['password']?.touched) && registerForm.controls['password']?.errors?.['required']"
+          class="help-block text-danger"
+          >Trường bắt buộc!</small
+        >
+
+        <small
+          class="label label-danger"
+          *ngIf="!registerForm.controls['password']?.valid && (registerForm.controls['password']?.dirty
+        ||registerForm.controls['password']?.touched) && registerForm.controls['password']?.errors?.['minlength']"
+          class="help-block text-danger"
+          >Mật khẩu tối thiểu 5 ký tự!</small
+        >
+      </div>
+      <div class="form-group">
+        <input
+          formControlName="confirmPassword"
+          type="password"
+          id="name"
+          class="form-control"
+          name="confirmPassword"
+          placeholder="Xác nhận mật khẩu"
+        /><br />
+        <small
+          class="label label-danger"
+          *ngIf="!registerForm.controls['confirmPassword']?.valid && (registerForm.controls['confirmPassword']?.dirty
+        ||registerForm.controls['confirmPassword']?.touched) && registerForm.controls['confirmPassword']?.errors?.['required']"
+          class="help-block text-danger"
+          >Trường bắt buộc!</small
+        >
+
+        <small
+          class="label label-danger"
+          *ngIf="!registerForm.controls['confirmPassword']?.valid && (registerForm.controls['confirmPassword']?.dirty
+        ||registerForm.controls['confirmPassword']?.touched) && registerForm.controls['confirmPassword']?.errors?.['minlength']"
+          class="help-block text-danger"
+          >Mật khẩu tối thiểu 5 ký tự!</small
+        >
+        <small class="help-block text-danger" *ngIf="passwordMatchError">
+          Xác nhận mật khẩu không đúng!
+        </small>
+      </div>
+
+            <div class="form-group">
+              <div class="form-check"></div>
             </div>
             <div class="text-center">
-              <button type="submit" class="btn btn-main text-center">Đăng kí</button>
+              <button  [disabled]="!registerForm.valid" type="submit" class="btn common-btn btn-info">Đăng kí</button>
             </div>
           </form>
           <p class="mt-20">Bạn đã có tài khoản ?<a [routerLink]="['/login']"> Đăng nhập</a></p>
