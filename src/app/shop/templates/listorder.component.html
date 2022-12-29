@@ -14,7 +14,6 @@
   </div>
 </section>
 
-<!-- <div class="row" *ngFor="let order of orders.orderDetail"> -->
 <div class="page-wrapper">
   <div class="cart shopping">
     <div class="container">
@@ -75,7 +74,7 @@
                     </tr>
                   </tbody>
                 </table>
-                <a href="checkout.html" class="btn btn-main pull-right">Thanh toán</a>
+                <a [routerLink]="['/checkout/']" class="btn btn-main pull-right">Thanh toán</a>
                 <td>
                   <!-- <a  (click)="updateCart()" class="btn btn-main pull-left">Cập nhật giỏ hàng</a> -->
                 </td>

@@ -8,6 +8,9 @@ import { Category, Images, Product } from './shop';
   providedIn: 'root'
 })
 export class ShopService {
+  image_detail(id: any) {
+    throw new Error('Method not implemented.');
+  }
 
 
   constructor(private http: HttpClient) { }
@@ -25,10 +28,12 @@ export class ShopService {
     return this.http.get<Category[]>(environment.urlAllCategories);
   }
 
-product_detail(id:any): Observable<Product>{
-  return this.http.get<Product>(environment.urlAllproduct_detail + '/' + id);
-}
-
+  product_detail(id: any): Observable<Product> {
+    return this.http.get<Product>(environment.urlAllproduct_detail + '/' + id);
+  }
+  product_images(id: any): Observable<Images[]> {
+    return this.http.get<Images[]>(environment.urlAllImage + '/' + id);
+  }
   addToCart(id: number) {
     return this.http.get(environment.urlAddToCart + id);
   }
@@ -41,7 +46,7 @@ product_detail(id:any): Observable<Product>{
   urlUpdatequantity(id: any, amount: any) {
     return this.http.get(environment.urlUpdatequantity + id + '/' + amount);
   }
-  
+
   searchProductList(name: string) {
     const response = new Promise(resolve => {
       this.http.get(environment.urlSearch + `product_list/search?
@@ -52,5 +57,11 @@ product_detail(id:any): Observable<Product>{
       });
     });
     return response;
+  }
+  getAllCart(){
+    return this.http.get(environment.urlGetAllCart);
+  }
+  storeOrder(request: any){
+    return this.http.post(environment.urlOrderStore, request);
   }
 }

@@ -1187,7 +1187,7 @@ input[type=email]:focus, input[type=password]:focus, input[type=text]:focus, inp
   color: #555;
 }
 .single-product-slider .carousel .carousel-indicators li img {
-  height: auto;
+  height: 80px;
   width: 60px;
 }
 .single-product-slider .carousel .carousel-control.right, .single-product-slider .carousel .carousel-control.left {
