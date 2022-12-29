@@ -53,4 +53,10 @@ product_detail(id:any): Observable<Product>{
     });
     return response;
   }
+  getAllCart(){
+    return this.http.get(environment.urlGetAllCart);
+  }
+  storeOrder(request: any){
+    return this.http.post(environment.urlOrderStore, request);
+  }
 }
