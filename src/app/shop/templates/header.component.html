@@ -44,33 +44,26 @@
                     <span>{{ order.quantity }} x {{ order.price| number }} vnd</span>
                   </div>
                 </div>
-                <!-- <a href="#!" class="remove"><i class="tf-ion-close"></i></a> -->
                 <a href="#" (click)="deleteCart(order.id)" class="remove"><i class="tf-ion-close"></i></a>
-                <!-- {{ order.id }} -->
               </div>
-              <!-- <span>Tổng : {{ totalPrice| number }} vnd</span> -->
-
               <!-- / Cart Item -->
 
               <div class="cart-summary">
-
               </div>
               <ul class="text-center cart-buttons">
                 <li><a [routerLink]="['listorder']" class="btn btn-small">View Cart</a></li>
                 <li><a href="checkout.html" class="btn btn-small btn-solid-border">Checkout</a></li>
               </ul>
             </div>
-
           </li><!-- / Cart -->
-          <!-- Languages -->
           <li *ngIf="!check">
-            <a class="join" [routerLink]="['/login']">
+            <a href="#" class="join" [routerLink]="['/login']">
               <i class="flaticon-round-account-button-with-user-inside"></i>
               Đăng Nhập
             </a>
           </li>
           <li *ngIf="check">
-            <a class="join" (click)="logout()">
+            <a href="#" class="join" (click)="logout()">
               <i class="flaticon-round-account-button-with-user-inside"></i>
               Đăng Xuất
             </a>
