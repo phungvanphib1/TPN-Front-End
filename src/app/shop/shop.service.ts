@@ -46,7 +46,9 @@ export class ShopService {
   urlUpdatequantity(id: any, amount: any) {
     return this.http.get(environment.urlUpdatequantity + id + '/' + amount);
   }
-
+  showOrder(id: any){
+    return this.http.get(environment.urlOrderShow+id);
+  }
   searchProductList(name: string) {
     const response = new Promise(resolve => {
       this.http.get(environment.urlSearch + `product_list/search?

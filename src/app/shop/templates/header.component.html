@@ -56,20 +56,27 @@
               </ul>
             </div>
           </li><!-- / Cart -->
-          <li *ngIf="!check">
-            <a href="#" class="join" [routerLink]="['/login']">
-              <i class="flaticon-round-account-button-with-user-inside"></i>
-              Đăng Nhập
-            </a>
+
+
+          <!-- profile -->
+          <li class="dropdown dropdown-slide">
+            <a href="#!" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="350"
+              role="button" aria-haspopup="true" aria-expanded="false"><span *ngIf="!check">
+                <a href="#" class="join" [routerLink]="['/login']">Đăng Nhập</a></span>{{name}}<span
+                class="tf-ion-ios-arrow-down"></span></a>
+            <ul *ngIf="check" class="dropdown-menu">
+              <li >
+                <a href="#" class="join" (click)="logout()">
+                  <i class="flaticon-round-account-button-with-user-inside"></i>
+                  Đăng Xuất
+                </a>
+              </li>
+            </ul>
           </li>
-          <li *ngIf="check">
-            <a href="#" class="join" (click)="logout()">
-              <i class="flaticon-round-account-button-with-user-inside"></i>
-              Đăng Xuất
-            </a>
-          </li>
+
           <!-- / Languages -->
-        </ul><!-- / .nav .navbar-nav .navbar-right -->
+        </ul>
+        <!-- / .nav .navbar-nav .navbar-right -->
       </div>
     </div>
   </div>

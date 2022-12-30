@@ -1,70 +1,94 @@
 <div class="page-wrapper">
-   <div class="checkout shopping">
-      <div class="container">
-         <div class="row">
-            <div class="col-md-8">
-               <div class="block billing-details">
-                  <h4 class="widget-title">Thông tin thanh toán</h4>
-                  <form>
-                     <div class="form-group">
-                        <label for="full_name">Tên Khách Hàng</label>
-                        <input formControlName="name" type="text" class="form-control" id="full_name" placeholder="">
-                     </div>
-                     <div class="form-group">
-                        <label for="user_address">Địa Chỉ</label>
-                        <input type="text" class="form-control" id="user_address" placeholder="">
-                     </div>
-                     <div class="checkout-country-code clearfix">
-                        <div class="form-group">
-                           <label for="user_post_code">Số Điện Thoại</label>
-                           <input type="number" class="form-control" id="user_post_code" name="zipcode" value="">
-                        </div>
-                     </div>
-                     <div class="checkout-country-code clearfix">
-                        <div class="form-group">
-                           <label for="user_post_code">Email</label>
-                           <input type="text" class="form-control" id="user_post_code" name="zipcode" value="">
-                        </div>
-                     </div>
-                     <div class="checkout-country-code clearfix">
-                        <div class="form-group">
-                           <label for="user_post_code">Ghi Chú</label>
-                           <input type="textarea" class="form-control" id="user_post_code" name="zipcode" value="">
-                        </div>
-                     </div>
-            <a [routerLink]="['/checkout/']" class="btn btn-main pull-right">Đặt Hàng</a>
-                  </form>
-               </div>
+  <div class="checkout shopping">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <div *ngIf="name" class="block billing-details">
+            <h4 class="widget-title">Thông tin thanh toán</h4>
+            <form [formGroup]="CheckoutFrom" (ngSubmit)="Order()">
+              <div class="checkout-country-code clearfix">
+                <div class="form-group">
+                  <label for="post_code">Email</label>
+                  <input type="email" formControlName="email" class="form-control" value="">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="full_name">Tên Khách Hàng</label>
+                <input formControlName="name" type="text" class="form-control" placeholder="">
+                <div *ngIf="CheckoutFrom.invalid && (CheckoutFrom.dirty || CheckoutFrom.touched)">
+                  <small class="form-text text-danger" *ngIf="CheckoutFrom.get('name')?.errors?.['required'] ">Trường Tên Bắt Buộc</small>
+                </div>
+              </div>
+              <div class="checkout-country-code clearfix">
+                <div class="form-group">
+                  <label for="post_code">Số Điện Thoại</label>
+                  <input type="text" class="form-control" formControlName="phone" value="">
+                  <div *ngIf="CheckoutFrom.invalid && (CheckoutFrom.dirty || CheckoutFrom.touched)">
+                    <small class="form-text text-danger" *ngIf="CheckoutFrom.get('phone')?.errors?.['required'] ">Số điện thoại bắt buộc</small>
+                    <small class="form-text text-danger" *ngIf="CheckoutFrom.get('phone')?.errors?.['pattern'] ">Trường giá phải là kiểu số</small>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="address">Địa Chỉ</label>
+                <input formControlName="address" type="text" class="form-control" placeholder="">
+                <small class="form-text text-primary" >Ví dụ: 133 Lý Thường Kiệt/ Đông Hà/Quảng Trị</small>
+                <small class="form-text text-danger" *ngIf="CheckoutFrom.get('address')?.errors?.['required'] "> Địa chỉ bắt buộc</small>
+              </div>
+              <div class="checkout-country-code clearfix">
+                <div class="form-group">
+                  <label for="post_code">Ghi Chú</label>
+                  <input type="text" class="form-control" formControlName="note" value="">
+                </div>
+              </div>
+              <button type="submit" class="btn btn-main pull-right">Đặt hàng</button>
+            </form>
+          </div>
 
+          <div *ngIf="!name" class="col-md-8">
+            <div class="row">
+              <div class="navbar-collapse collapse text-center">
+                <br><br><br><br>
+                <br><br><br><br>
+                <h1>Vui lòng đăng nhập trước khi đặt hàng nhé</h1>
+                <div class="navbar-collapse collapse text-center">
+                  <a class="btn btn-main" [routerLink]="['/login']">Đăng nhập</a>
+                </div>
+              </div>
+              <br>
+              <br>
             </div>
-            <div class="col-md-4">
-               <div class="product-checkout-details">
-                  <div class="block">
-                     <h4 class="widget-title">Tóm Tắt Đơn Hàng</h4>
-                     <div *ngFor="let order of orders" class="media product-card">
-                        <a class="pull-left" href="product-single.html">
-                           <img style="margin-left: 0px;" [src]="url+order.image" alt="" width="100px" height="100px"
-                              class="img-fluid">
-                        </a>
-                        <div class="media-body">
-                           <h4 class="media-heading"><a href="product-single.html">{{ order.name }}</a></h4>
-                           <p class="price">{{ order.price| number }} vnd x {{ order.quantity| number }} cái</p>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="discount-code">
-                     <div class="summary-total">
-                        <span>Tổng Tiền : </span>
-                        <span>
-                           <h3 id="tong">{{ totalPrice| number }} VND </h3>
-                        </span>
-                     </div>
-                  </div>
-               </div>
-               <div class="discount-code">
+          </div>
+
+        </div>
+        <div class="col-md-4">
+          <div class="product-checkout-details">
+            <div class="block">
+              <h4 class="widget-title">Tóm Tắt Đơn Hàng</h4>
+              <div *ngFor="let order of orders" class="media product-card">
+                <a class="pull-left" href="product-single.html">
+                  <img style="margin-left: 0px;" [src]="url+order.image" alt="" width="100px" height="100px"
+                    class="img-fluid">
+                </a>
+                <div class="media-body">
+                  <h4 class="media-heading"><a href="product-single.html">{{ order.name }}</a></h4>
+                  <p class="price">{{ order.price| number }} vnd x {{ order.quantity| number }} cái</p>
+                </div>
+              </div>
             </div>
-         </div>
-         </div>
-         </div>
+            <div class="discount-code">
+              <div class="summary-total">
+                <span>Tổng Tiền : </span>
+                <span>
+                  <h3 id="tong">{{ totalPrice| number }} VND </h3>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="discount-code">
+          </div>
+        </div>
       </div>
-   </div>
+    </div>
+  </div>
+</div>

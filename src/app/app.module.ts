@@ -5,7 +5,9 @@ import { MatInputModule } from '@angular/material/input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule, HttpHandler, HttpEvent } from '@angular/common/http';
+import { HttpClientModule, HttpHandler, HttpEvent, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JWTInterceptorService } from './shop/jwtinterceptor.service';
+
 
 import { AppComponent } from './app.component';
 import { FooterComponent } from './shop/components/footer.component';
@@ -34,7 +36,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: JWTInterceptorService, multi: true } ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
