@@ -6,6 +6,7 @@ import { ShopService } from '../shop.service';
 import { Order } from '../shop';
 import { AuthService } from '../auth.service';
 import { HttpClient } from '@angular/common/http';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-checkout',
@@ -35,7 +36,6 @@ export class CheckoutComponent implements OnInit {
     private http: HttpClient
   ) { }
 
-
   ngOnInit(): void {
     this.customer_id = this.route.snapshot.params['id'];
     this.profile()
@@ -53,7 +53,6 @@ export class CheckoutComponent implements OnInit {
         this.totalPrice += (parseInt(orderDetail.price) * parseInt(orderDetail.quantity));
       }
     })
-
   }
 
   profile() {
@@ -78,11 +77,35 @@ export class CheckoutComponent implements OnInit {
       customer_id: id,
     }
     console.log(Order);
-
+    let timerInterval: string | number | NodeJS.Timer | undefined
+    Swal.fire({
+      title: 'Đang xử lí đơn hàng của bạn!',
+      html: 'Chờ xíu nhé!',
+      timer: 5000,
+      timerProgressBar: true,
+      didOpen: () => {
+        Swal.showLoading()
+      },
+      willClose: () => {
+        clearInterval(timerInterval)
+      }
+    }).then((result) => {
+      if (result.dismiss === Swal.DismissReason.timer) {
+        console.log('I was closed by the timer')
+      }
+    })
     this.ShopService.storeOrder(Order).subscribe(res => {
       order = res;
-      alert('Thành công');
-      this._Router.navigate(['order-detail', order.id]);
+      Swal.fire({
+        icon: 'success',
+        title: 'Đặt hàng thành công!',
+        text: 'Bây giờ tiếp tục mua hàng nhé!',
+        confirmButtonText: 'Tuyệt',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this._Router.navigate(['order-detail']);
+        }
+      })
     });
 
   }
