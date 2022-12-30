@@ -14,8 +14,10 @@ export const environment = {
   urlDeleteCart: urlApi + 'remove-to-cart/',
   urlUpdatequantity: urlApi + 'update-cart/',
 
-  urlCreateOrder : urlApi+'order/create',
-  urlOrderStore : urlApi+'order/store',
+  urlProfile: urlApi+'auth/profile',
+  urlCreateOrder : urlApi+'order_create',
+  urlOrderStore : urlApi+'order_store',
+  urlOrderShow:urlApi+'',
 
   urlRegister: urlApi + 'register',
   urlLogin: urlApi + 'login-customer',

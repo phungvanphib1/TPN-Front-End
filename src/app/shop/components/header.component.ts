@@ -17,6 +17,7 @@ export class HeaderComponent implements OnInit {
   id_user: any;
   name: any;
   totalPrice: number = 0;
+  error: any;
   constructor(private shopService: ShopService,
     private _Router: Router,
     private _AuthService: AuthService,
@@ -33,21 +34,39 @@ export class HeaderComponent implements OnInit {
       // }
     })
   }
+  ngDoCheck(): void{
+    if(!this.check){
+      this.check = this._AuthService.checkAuth();
+
+    }
+    if(this.check && !this.name && !this.id_user){
+        this.profile();
+    }
+    this.error;
+}
+profile(){
+  if(this._AuthService.checkAuth()) {
+      this._AuthService.profile().subscribe(res =>{
+        this.id_user = res.id;
+        this.name = res.name;
+      },e=>{
+        console.log(e);
+        this._AuthService.logout();
+      })
+  }
+  else{
+    this._Router.navigate(['/login']);
+  }
+}
+
+
   logout() {
     this._AuthService.logout();
     this.check = this._AuthService.checkAuth();
     this.listCart = [];
     this._Router.navigate(['login']);
   }
-  ngDoCheck(): void {
-    if (!this.check) {
-      this.check = this._AuthService.checkAuth();
-    }
-    if (this.check && !this.name && !this.id_user) {
-      // this.getAllCart();
 
-    }
-  }
   handdleSearch(name: any) {
     const keywork = name.target.value;
     const search = this.shopService.searchProductList(keywork).then(res => {
