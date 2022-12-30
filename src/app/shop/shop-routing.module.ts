@@ -7,6 +7,7 @@ import { ListorderComponent } from './components/listorder.component';
 import { LoginComponent } from './components/login.component';
 import { RegisterComponent } from './components/register.component';
 import { CheckoutComponent } from './components/checkout.component';
+import { OrderDetailComponent } from './components/order-detail.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'listorder', component: ListorderComponent },
   { path: 'register', component: RegisterComponent},
   { path: 'login', component: LoginComponent},
+  { path: 'order-detail', component: OrderDetailComponent},
 
 ];
 
