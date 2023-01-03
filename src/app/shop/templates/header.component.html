@@ -31,7 +31,7 @@
         <!-- Cart -->
         <ul class="top-menu text-right list-inline">
           <li class="dropdown cart-nav dropdown-slide">
-            <a href="#" class="dropdown-toggle"><i class="tf-ion-android-cart"></i>Cart</a>
+            <a href="#" class="dropdown-toggle"><i class="tf-ion-android-cart"></i>Giỏ hàng</a>
             <div class="dropdown-menu cart-dropdown">
               <!-- Cart Item -->
               <div class="media" *ngFor="let order of orders">
@@ -51,8 +51,8 @@
               <div class="cart-summary">
               </div>
               <ul class="text-center cart-buttons">
-                <li><a [routerLink]="['listorder']" class="btn btn-small">View Cart</a></li>
-                <li><a href="checkout.html" class="btn btn-small btn-solid-border">Checkout</a></li>
+                <li><a [routerLink]="['listorder']" class="btn btn-small">Xem giỏ hàng</a></li>
+                <li><a [routerLink]="['/checkout/']"class="btn btn-small btn-solid-border">Thanh toán</a></li>
               </ul>
             </div>
           </li><!-- / Cart -->
@@ -105,7 +105,8 @@
           <!-- Home -->
           <li class="dropdown ">
             <a [routerLink]="['home']">Trang chủ</a>
-          </li><!-- / Home -->
+          </li>
+          <!-- / Home -->
           <!-- Elements -->
           <li class="dropdown dropdown-slide">
             <a href="#!" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="350"
@@ -114,7 +115,7 @@
             <div class="dropdown-menu">
               <div class="row">
                 <!-- Basic -->
-                <div class="col-lg-6 col-md-6 mb-sm-3">
+                <div class="col-lg-12 col-md-12 mb-sm-3">
                   <ul>
                     <li class="dropdown-header">Sản Phẩm</li>
                     <li role="separator" class="divider"></li>
@@ -122,14 +123,7 @@
                   </ul>
                 </div>
                 <!-- Layout -->
-                <div class="col-lg-6 col-md-6 mb-sm-3">
-                  <ul>
-                    <li class="dropdown-header">Layout</li>
-                    <li role="separator" class="divider"></li>
-                    <li><a href="#">Product Details</a></li>
-                    <li><a href="#">Shop With Sidebar</a></li>
-                  </ul>
-                </div>
+
               </div><!-- / .row -->
             </div><!-- / .dropdown-menu -->
           </li><!-- / Elements -->
@@ -138,7 +132,11 @@
             <a href="#!" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="350"
               role="button" aria-haspopup="true" aria-expanded="false">Tìm Kiếm Nhanh <span
                 class="tf-ion-ios-arrow-down"></span></a>
-
+             <!-- đăng ki -->
+          <li class="dropdown ">
+            <a [routerLink]="['/register']">Đăng kí</a>
+          <!-- </li> -->
+          <!-- / đăng kí -->
             <div class="dropdown-menu">
               <div class="row">
                 <!-- Introduction -->
@@ -171,20 +169,7 @@
               </div>
             </div>
           </li>
-          <!-- Blog -->
-          <li class="dropdown dropdown-slide">
-            <a href="#!" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="350"
-              role="button" aria-haspopup="true" aria-expanded="false">Blog <span
-                class="tf-ion-ios-arrow-down"></span></a>
-            <ul class="dropdown-menu">
-              <li><a href="blog-left-sidebar.html">Blog Left Sidebar</a></li>
-              <li><a href="blog-right-sidebar.html">Blog Right Sidebar</a></li>
-              <li><a href="blog-full-width.html">Blog Full Width</a></li>
-              <li><a href="blog-grid.html">Blog 2 Columns</a></li>
-              <li><a href="blog-single.html">Blog Single</a></li>
-            </ul>
-          </li>
-          <!-- / Blog -->
+
         </ul>
         <!-- / .nav .navbar-nav -->
       </div>
