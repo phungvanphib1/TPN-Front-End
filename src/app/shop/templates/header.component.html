@@ -52,7 +52,7 @@
               </div>
               <ul class="text-center cart-buttons">
                 <li><a [routerLink]="['listorder']" class="btn btn-small">Xem giỏ hàng</a></li>
-                <li><a [routerLink]="['/checkout/']"class="btn btn-small btn-solid-border">Thanh toán</a></li>
+                <li><a [routerLink]="['/checkout/']" class="btn btn-small btn-solid-border">Thanh toán</a></li>
               </ul>
             </div>
           </li><!-- / Cart -->
@@ -65,7 +65,7 @@
                 <a href="#" class="join" [routerLink]="['/login']">Đăng Nhập</a></span>{{name}}<span
                 class="tf-ion-ios-arrow-down"></span></a>
             <ul *ngIf="check" class="dropdown-menu">
-              <li >
+              <li>
                 <a href="#" class="join" (click)="logout()">
                   <i class="flaticon-round-account-button-with-user-inside"></i>
                   Đăng Xuất
@@ -132,11 +132,7 @@
             <a href="#!" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="350"
               role="button" aria-haspopup="true" aria-expanded="false">Tìm Kiếm Nhanh <span
                 class="tf-ion-ios-arrow-down"></span></a>
-             <!-- đăng ki -->
-          <li class="dropdown ">
-            <a [routerLink]="['/register']">Đăng kí</a>
-          <!-- </li> -->
-          <!-- / đăng kí -->
+
             <div class="dropdown-menu">
               <div class="row">
                 <!-- Introduction -->
@@ -169,7 +165,11 @@
               </div>
             </div>
           </li>
-
+          <!-- đăng ki -->
+          <li class="dropdown ">
+            <a [routerLink]="['/register']">Đăng kí</a>
+          </li>
+          <!-- / đăng kí -->
         </ul>
         <!-- / .nav .navbar-nav -->
       </div>
